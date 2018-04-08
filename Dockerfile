@@ -52,8 +52,6 @@ RUN npm install
 #RUN pwd
 #VOLUME /usr/src/app/logs
 #VOLUME /usr/src/app/auth
-RUN mkdir /home/p2pvps/auth
-RUN mkdir /home/p2pvps/logs
 VOLUME /home/p2pvps/logs
 VOLUME /home/p2pvps/auth
 
