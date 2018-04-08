@@ -135,9 +135,9 @@ async function fulfillNewOrders() {
 
     // Get the listing details from the orderId.
     const listing = await util.getListingFromOrder(config, obOrderId);
-    console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
+
+    // Get the slug of the listing that was just purchased.
     const slug = listing.contract.vendorOrderFulfillment[0].slug;
-    console.log(`slug: ${slug}`);
 
     // Get device ID from the listing
     const tmp = slug.split("-");
