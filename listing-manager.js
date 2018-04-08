@@ -128,6 +128,7 @@ async function fulfillNewOrders() {
     // Exit if the notice is not for an order.
     if (thisNotice.notification.type !== "orderComplete") {
       logr.debug("Notification returned was not an order. Exiting.");
+      console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
       return null;
     }
 
