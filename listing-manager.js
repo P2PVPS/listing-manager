@@ -131,17 +131,19 @@ async function fulfillNewOrders() {
       return null;
     }
 
-    // Get device ID from the listing
-    //const tmp = thisNotice.notification.slug.split("-");
-    //const deviceId = tmp[tmp.length - 1];
     const obOrderId = thisNotice.notification.orderId;
 
     // Get the listing details from the orderId.
     const listing = await util.getListingFromOrder(config, obOrderId);
-    console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
+    //console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
+    const slug = listing.contract.vendorListings.slug;
+
+    // Get device ID from the listing
+    const tmp = thisNotice.notification.slug.split("-");
+    const deviceId = tmp[tmp.length - 1];
 
     // Exit if no device ID was returned.
-    //if (deviceId == null) return null;
+    if (deviceId == null) return null;
     // TODO need some better validation here to detect if a valid GUID was returned.
 
     // Get devicePublicModel from the server.
