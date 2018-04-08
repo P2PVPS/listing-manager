@@ -135,8 +135,9 @@ async function fulfillNewOrders() {
 
     // Get the listing details from the orderId.
     const listing = await util.getListingFromOrder(config, obOrderId);
-    //console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
+    console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
     const slug = listing.contract.vendorListings.slug;
+    console.log(`slug: ${slug}`);
 
     // Get device ID from the listing
     const tmp = slug.split("-");
@@ -194,6 +195,7 @@ async function fulfillNewOrders() {
     } else {
       logr.error(`Error in listing-manager.js/fulfillNewOrders(): ${err}`);
       logr.error(`Error stringified: ${JSON.stringify(err, null, 2)}`);
+      //throw err;
     }
   }
 }
