@@ -139,7 +139,7 @@ async function fulfillNewOrders() {
     const slug = listing.contract.vendorListings.slug;
 
     // Get device ID from the listing
-    const tmp = thisNotice.notification.slug.split("-");
+    const tmp = slug.split("-");
     const deviceId = tmp[tmp.length - 1];
 
     // Exit if no device ID was returned.
