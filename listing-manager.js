@@ -137,8 +137,8 @@ async function fulfillNewOrders() {
     const obOrderId = thisNotice.notification.orderId;
 
     // Get the listing details from the orderId.
-    const listing = await util.getListingFromOrder(obOrderId);
-    console.log(`listing: ${JSON.stringify(listing,null,2)}`)
+    const listing = await util.getListingFromOrder(config, obOrderId);
+    console.log(`listing: ${JSON.stringify(listing, null, 2)}`);
 
     // Exit if no device ID was returned.
     //if (deviceId == null) return null;
