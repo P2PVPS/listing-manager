@@ -136,6 +136,10 @@ async function fulfillNewOrders() {
     //const deviceId = tmp[tmp.length - 1];
     const obOrderId = thisNotice.notification.orderId;
 
+    // Get the listing details from the orderId.
+    const listing = await util.getListingFromOrder(obOrderId);
+    console.log(`listing: ${JSON.stringify(listing,null,2)}`)
+
     // Exit if no device ID was returned.
     //if (deviceId == null) return null;
     // TODO need some better validation here to detect if a valid GUID was returned.
