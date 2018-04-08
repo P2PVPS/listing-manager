@@ -131,17 +131,22 @@ async function fulfillNewOrders() {
       console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
       return null;
     }
+    if (thisNotice.notification.type !== "order") {
+      logr.debug("Notification returned was not an order. Exiting.");
+      return null;
+    }
 
-    const obOrderId = thisNotice.notification.orderId;
+    //const obOrderId = thisNotice.notification.orderId;
 
     // Get the listing details from the orderId.
-    const listing = await util.getListingFromOrder(config, obOrderId);
-
-    // Get the slug of the listing that was just purchased.
-    const slug = listing.contract.vendorOrderFulfillment[0].slug;
+    //const listing = await util.getListingFromOrder(config, obOrderId);
 
     // Get device ID from the listing
-    const tmp = slug.split("-");
+    //const slug = listing.contract.vendorOrderFulfillment[0].slug;
+    //const tmp = slug.split("-");
+    //const deviceId = tmp[tmp.length - 1];
+
+    const tmp = thisNotice.notification.slug.split("-");
     const deviceId = tmp[tmp.length - 1];
 
     // Exit if no device ID was returned.
