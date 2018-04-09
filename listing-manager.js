@@ -169,10 +169,10 @@ async function fulfillNewOrders() {
 
     // Get the devicePrivateModel
     const devicePrivateModel = await util.getDevicePrivateModel(config, privateId);
-    console.log(`devicePrivateModel: ${JSON.stringify(devicePrivateModel,null,2)}`)
+    console.log(`devicePrivateModel: ${JSON.stringify(devicePrivateModel, null, 2)}`);
 
     // TODO need better validation. Should roll that into the util.getDevicePrivateModel().
-    if (devicePrivateModel === null) {
+    if (!devicePrivateModel) {
       console.log(`Could not find devicePrivateData model!`);
       return null;
     }
