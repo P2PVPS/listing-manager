@@ -161,7 +161,7 @@ async function fulfillNewOrders() {
 
     // Get devicePublicModel from the server.
     const devicePublicModel = await util.getDevicePublicModel(config, deviceId);
-    console.log(`Got device public model.`)
+    console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
 
     // Return the ID for the devicePrivateModel
     const privateId = devicePublicModel.privateData;
@@ -170,7 +170,11 @@ async function fulfillNewOrders() {
     const devicePrivateModel = await util.getDevicePrivateModel(config, privateId);
 
     // TODO need better validation. Should roll that into the util.getDevicePrivateModel().
-    if (devicePrivateModel == null) return null;
+    if (devicePrivateModel == null) {
+      console.log(`Could not find devicePrivateData model!`);
+      return null;
+    }
+    console.log(`Got devicePrivateData model: ${devicePrivateModel._id.toString()}`)
 
     // TODO If the order is a renewal, then adjust the code path at this point.
     // Note, expiration date is auotmatically updated in the next promise.
