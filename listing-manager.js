@@ -161,7 +161,8 @@ async function fulfillNewOrders() {
 
     // Get devicePublicModel from the server.
     const devicePublicModel = await util.getDevicePublicModel(config, deviceId);
-    console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
+    //console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
+    console.log(`Got device public model: ${JSON.stringify(devicePublicModel,null,2)}`);
 
     // Return the ID for the devicePrivateModel
     const privateId = devicePublicModel.privateData;
@@ -174,7 +175,7 @@ async function fulfillNewOrders() {
       console.log(`Could not find devicePrivateData model!`);
       return null;
     }
-    console.log(`Got devicePrivateData model: ${devicePrivateModel._id.toString()}`)
+    console.log(`Got devicePrivateData model: ${devicePrivateModel._id.toString()}`);
 
     // TODO If the order is a renewal, then adjust the code path at this point.
     // Note, expiration date is auotmatically updated in the next promise.
