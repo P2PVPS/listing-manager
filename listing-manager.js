@@ -135,7 +135,8 @@ async function fulfillNewOrders() {
       logr.debug("Notification returned was not an order. Exiting.");
       console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
       return null;
-    }
+    } else
+    logr.debug(`Order recieved: ${JSON.stringify(thisNotice, null, 2)}`);
 
     //const obOrderId = thisNotice.notification.orderId;
 
