@@ -161,8 +161,8 @@ async function fulfillNewOrders() {
 
     // Get devicePublicModel from the server.
     const devicePublicModel = await util.getDevicePublicModel(config, deviceId);
-    //console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
-    console.log(`Got device public model: ${JSON.stringify(devicePublicModel,null,2)}`);
+    console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
+    //console.log(`Got device public model: ${JSON.stringify(devicePublicModel, null, 2)}`);
 
     // Return the ID for the devicePrivateModel
     const privateId = devicePublicModel.privateData;
@@ -172,7 +172,7 @@ async function fulfillNewOrders() {
 
     // TODO need better validation. Should roll that into the util.getDevicePrivateModel().
     if (devicePrivateModel == null) {
-      console.log(`Could not find devicePrivateData model!`);
+      console.log(`Could not find devicePrivateData model! Has the listing expired?`);
       return null;
     }
     console.log(`Got devicePrivateData model: ${devicePrivateModel._id.toString()}`);
