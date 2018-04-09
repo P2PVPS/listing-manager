@@ -118,6 +118,7 @@ async function fulfillNewOrders() {
     // Get NEW notifications.
     const notes = await util.getNewOBNotifications(config);
     //console.log(`notes: ${JSON.stringify(notes, null, 2)}`);
+    if (notes.length === 0) console.log(`No new notes found.`);
 
     // For now, assuming I have one order at a time.
     const thisNotice = notes[0];
@@ -135,7 +136,7 @@ async function fulfillNewOrders() {
       logr.debug("Notification returned was not an order. Exiting.");
       console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
       return null;
-    } else
+    }
     logr.debug(`Order recieved: ${JSON.stringify(thisNotice, null, 2)}`);
 
     //const obOrderId = thisNotice.notification.orderId;
@@ -152,11 +153,15 @@ async function fulfillNewOrders() {
     const deviceId = tmp[tmp.length - 1];
 
     // Exit if no device ID was returned.
-    if (deviceId == null) return null;
+    if (deviceId == null) {
+      console.log(`deviceId is null`);
+      return null;
+    }
     // TODO need some better validation here to detect if a valid GUID was returned.
 
     // Get devicePublicModel from the server.
     const devicePublicModel = await util.getDevicePublicModel(config, deviceId);
+    console.log(`Got device public model.`)
 
     // Return the ID for the devicePrivateModel
     const privateId = devicePublicModel.privateData;
