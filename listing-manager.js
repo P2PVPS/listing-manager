@@ -134,7 +134,7 @@ async function fulfillNewOrders() {
     //}
     if (thisNotice.notification.type !== "order") {
       logr.debug("Notification returned was not an order. Exiting.");
-      console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
+      //console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
       return null;
     }
     //logr.debug(`Order recieved: ${JSON.stringify(thisNotice, null, 2)}`);
