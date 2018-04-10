@@ -87,6 +87,9 @@ config.apiCredentials = apiCredentials;
 // Log into the P2P VPS API.
 async function loginAdmin() {
   try {
+    // Give the P2P VPS server time to start, before making the login call.
+    await util.sleep(3000);
+
     // Retrieve the login credentials from the json file.
     const adminData = await util.readAdminFile();
     //console.log(`adminData: ${JSON.stringify(adminData, null, 2)}`);
