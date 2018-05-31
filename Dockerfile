@@ -55,7 +55,7 @@ RUN npm install
 VOLUME /home/p2pvps/logs
 VOLUME /home/p2pvps/auth
 
-EXPOSE 3434
+#EXPOSE 3434
 #CMD [ "npm", "start" ]
 
 #Dummy app just to get the container running with docker-compose.
