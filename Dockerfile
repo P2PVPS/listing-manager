@@ -17,15 +17,15 @@ WORKDIR /home/p2pvps
 
 #Install KeystoneJS Dependencies
 RUN apt-get update
-RUN apt-get install -y git
-RUN apt-get install -y curl
-RUN apt-get install -y nano
+RUN apt-get install -y git curl nano
+#RUN apt-get install -y curl
+#RUN apt-get install -y nano
 
 #Install Node and NPM
 RUN curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
-RUN apt-get install -y nodejs
-RUN apt-get install -y build-essential
+RUN apt-get install -y nodejs build-essential
+#RUN apt-get install -y build-essential
 
 # Create app directory
 #WORKDIR /usr/src/app
