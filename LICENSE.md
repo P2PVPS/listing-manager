@@ -1,6 +1,9 @@
+
+# License
 MIT License
 
-Copyright (c) 2018 Chris Troutner <chris.troutner@gmail.com> & P2P VPS Inc
+Copyright (c) 2018 [Chris Troutner](http://christroutner.com) &
+[P2P VPS Inc](http://p2pvps.org)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
