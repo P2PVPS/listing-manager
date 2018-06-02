@@ -14,5 +14,9 @@ repository, go there and follow the instructions until it tells you to come here
 * Build the Docker image for the Listing Manager by running:<br>
 `./build-image`
 
+* Go back to the
+[server-deployment](https://github.com/P2PVPS/server-deployment2)
+repo an finish following the installation instructions there.
+
 # License
 [MIT License](LICENSE.md)
