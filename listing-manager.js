@@ -56,7 +56,7 @@ const SERVER_PORT = "5000";
 //const SERVER_URL = "http://p2pvps.net";
 //const SERVER_PORT = "80";
 
-const OB_SERVER = "serverdeployment2_openbazaar_1"
+const OB_SERVER = "http://serverdeployment2_openbazaar_1";
 const OB_SERVER_PORT = "4002"; // Open Bazaar port
 
 // Create an Express server. Future development will allow serving of webpages and creation of Client API.

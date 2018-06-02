@@ -3,7 +3,7 @@ MAINTAINER Chris Troutner <chris.troutner@gmail.com>
 
 #Update the OS and install any OS packages needed.
 RUN apt-get update
-RUN apt-get install -y sudo
+RUN apt-get install -y sudo iputils-ping
 
 #Create the user 'connextcms' and add them to the sudo group.
 RUN useradd -ms /bin/bash p2pvps
