@@ -309,14 +309,17 @@ async function checkListedDevices() {
       if (!isValid) continue;
 
       // Get the devicePublicModel for the current listing.
-      let publicData
+      let publicData;
       try {
         publicData = await util.getDevicePublicModel(config, thisDeviceId);
       } catch (err) {
         // User deleted device. Remove listing.
         if (err.statusCode === 404) {
           // Remove the listing from the OB store.
-          await util.removeOBListing(config, publicData);
+          //await util.removeOBListing(config, publicData);
+
+          // Delete the actual OB listing.
+          await openbazaar.removeListing(config, thisSlug);
 
           logr.log(
             `OB listing for ${thisDeviceId} has been removed because model could not be found on server.`
