@@ -309,7 +309,22 @@ async function checkListedDevices() {
       if (!isValid) continue;
 
       // Get the devicePublicModel for the current listing.
-      const publicData = await util.getDevicePublicModel(config, thisDeviceId);
+      let publicData
+      try {
+        publicData = await util.getDevicePublicModel(config, thisDeviceId);
+      } catch (err) {
+        // User deleted device. Remove listing.
+        if (err.statusCode === 404) {
+          // Remove the listing from the OB store.
+          await util.removeOBListing(config, publicData);
+
+          logr.log(
+            `OB listing for ${thisDeviceId} has been removed because model could not be found on server.`
+          );
+          return true;
+        }
+        throw err;
+      }
 
       // Calculate the delay since the client last checked in.
       const checkinTimeStamp = new Date(publicData.checkinTimeStamp);
