@@ -227,7 +227,8 @@ async function fulfillNewOrders() {
 }
 
 // Call checkNotifications() every 2 minutees.
-const notificationTimer = setInterval(function() {
+//const notificationTimer = setInterval(function() {
+setInterval(function() {
   fulfillNewOrders();
 }, CHECK_OB_NOTIFICATIONS_INTERVAL);
 //fulfillNewOrders();
@@ -286,7 +287,8 @@ async function checkRentedDevices() {
 //checkRentedDevices(); // Call the function immediately.
 
 // Call checkRentedDevices() every 2 minutees.
-const checkRentedDevicesTimer = setInterval(function() {
+//const checkRentedDevicesTimer = setInterval(function() {
+setInterval(function() {
   checkRentedDevices();
 }, CHECK_RENTED_DEVICES_INTERVAL);
 
@@ -404,7 +406,8 @@ async function checkListedDevices() {
 //checkListedDevices(); // Call the function immediately.
 
 // Call checkRentedDevices() every 2 minutees.
-const checkListedDevicesTimer = setInterval(function() {
+//const checkListedDevicesTimer = setInterval(function() {
+setInterval(function() {
   checkListedDevices();
 }, CHECK_LISTED_DEVICES_INTERVAL);
 
