@@ -415,6 +415,7 @@ function resetConfig() {
     apiCredentials: apiCredentials,
     server: SERVER_URL,
     port: SERVER_PORT,
+    obServer: OB_SERVER,
     obPort: OB_SERVER_PORT,
     logr: logr, // Include a handle to the debug logger.
     adminUser: "system",
