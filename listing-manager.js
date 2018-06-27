@@ -151,6 +151,7 @@ async function fulfillNewOrders() {
     //const tmp = slug.split("-");
     //const deviceId = tmp[tmp.length - 1];
 
+    console.log(`Fulfilling order for ${thisNotice.notification.slug}`)
     const tmp = thisNotice.notification.slug.split("-");
     const deviceId = tmp[tmp.length - 1];
 
