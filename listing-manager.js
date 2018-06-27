@@ -134,11 +134,6 @@ async function fulfillNewOrders() {
     if (thisNotice === undefined) return null;
 
     // Exit if the notice is not for an order.
-    //if (thisNotice.notification.type !== "orderComplete") {
-    //  logr.debug("Notification returned was not an order. Exiting.");
-    //  console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
-    //  return null;
-    //}
     if (thisNotice.notification.type !== "order") {
       logr.debug("Notification returned was not an order. Exiting.");
       //console.log(`thisNotice: ${JSON.stringify(thisNotice, null, 2)}`);
@@ -202,7 +197,7 @@ async function fulfillNewOrders() {
     await util.markNotificationAsRead(config);
 
     // Update the expiration date.
-    await util.updateExpiration(config, devicePublicModel._id, 20);
+    await util.updateExpiration(config, devicePublicModel._id, 30);
 
     // Add the device to the Rented Devices list.
     await util.addRentedDevice(config, devicePublicModel._id);
