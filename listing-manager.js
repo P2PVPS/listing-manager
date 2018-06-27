@@ -81,6 +81,7 @@ let config = {
   adminUser: "system",
   adminPass: "",
   jwt: "",
+  isRenewal: false,
 };
 const apiCredentials = openbazaar.getOBAuth(config);
 config.apiCredentials = apiCredentials;
@@ -151,9 +152,14 @@ async function fulfillNewOrders() {
     //const tmp = slug.split("-");
     //const deviceId = tmp[tmp.length - 1];
 
-    console.log(`Fulfilling order for ${thisNotice.notification.slug}`)
+    console.log(`Fulfilling order for ${thisNotice.notification.slug}`);
     const tmp = thisNotice.notification.slug.split("-");
     const deviceId = tmp[tmp.length - 1];
+
+    // Determine if this is a renewal or not.
+    const isRenewal = thisNotice.notification.slug.indexOf('renewal');
+    if(isRenewal) config.isRenewal = true;
+    else conig.isRenewal = false;
 
     // Exit if no device ID was returned.
     if (deviceId == null) {
@@ -420,5 +426,6 @@ function resetConfig() {
     adminUser: "system",
     adminPass: config.adminPass,
     jwt: config.jwt,
+    isRenewal: false,
   };
 }
