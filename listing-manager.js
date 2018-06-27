@@ -159,7 +159,7 @@ async function fulfillNewOrders() {
     // Determine if this is a renewal or not.
     const isRenewal = thisNotice.notification.slug.indexOf("renewal");
     if (isRenewal > -1) config.isRenewal = true;
-    else conig.isRenewal = false;
+    else config.isRenewal = false;
 
     // Exit if no device ID was returned.
     if (deviceId == null) {
