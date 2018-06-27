@@ -169,7 +169,7 @@ async function fulfillNewOrders() {
     // TODO need some better validation here to detect if a valid GUID was returned.
 
     // Get devicePublicModel from the server.
-    const devicePublicModel = await util.getDevicePublicModel(config, deviceId);
+    let devicePublicModel = await util.getDevicePublicModel(config, deviceId);
     //console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
     //console.log(`Got device public model: ${JSON.stringify(devicePublicModel, null, 2)}`);
 
@@ -204,7 +204,8 @@ async function fulfillNewOrders() {
     await util.markNotificationAsRead(config);
 
     // Update the expiration date.
-    await util.updateExpiration(config, devicePublicModel._id, 30);
+    devicePublicModel = await util.updateExpiration(config, devicePublicModel._id, 30);
+    if (!devicePublicModel) throw {message: `Error updating device expiration!`};
 
     // Add the device to the Rented Devices list.
     await util.addRentedDevice(config, devicePublicModel._id);
