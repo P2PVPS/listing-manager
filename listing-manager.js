@@ -187,7 +187,6 @@ async function fulfillNewOrders() {
     }
     //console.log(`Got devicePrivateData model: ${devicePrivateModel._id.toString()}`);
 
-    // TODO If the order is a renewal, then adjust the code path at this point.
     // Note, expiration date is auotmatically updated in the next promise.
 
     config.devicePrivateData = devicePrivateModel;
@@ -205,13 +204,16 @@ async function fulfillNewOrders() {
 
     // Update the expiration date.
     devicePublicModel = await util.updateExpiration(config, devicePublicModel._id, 30);
-    if (!devicePublicModel) throw {message: `Error updating device expiration!`};
+    if (!devicePublicModel) throw { message: `Error updating device expiration!` };
 
     // Add the device to the Rented Devices list.
     await util.addRentedDevice(config, devicePublicModel._id);
 
     // Remove the listing from the OB store and the obContract model from the server.
     await util.removeOBListing(config, devicePublicModel);
+
+    // Add a payment object to the payments array.
+    await util.addPaymentObject(config);
 
     console.log(`OB listing for ${devicePublicModel._id} successfully removed.`);
 
