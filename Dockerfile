@@ -30,6 +30,7 @@ WORKDIR /home/p2pvps
 # Clone the p2pvps-server2 repo
 RUN git clone https://github.com/P2PVPS/listing-manager
 WORKDIR /home/p2pvps/listing-manager
+RUN git checkout unstable
 RUN npm install
 
 

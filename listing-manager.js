@@ -170,8 +170,7 @@ async function fulfillNewOrders() {
 
     // Get devicePublicModel from the server.
     let devicePublicModel = await util.getDevicePublicModel(config, deviceId);
-    //console.log(`Got device public model: ${devicePublicModel._id.toString()}`);
-    //console.log(`Got device public model: ${JSON.stringify(devicePublicModel, null, 2)}`);
+    console.log(`Got device public model: ${JSON.stringify(devicePublicModel, null, 2)}`);
 
     // Return the ID for the devicePrivateModel
     const privateId = devicePublicModel.privateData;
