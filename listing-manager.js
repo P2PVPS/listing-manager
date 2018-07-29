@@ -212,6 +212,7 @@ async function fulfillNewOrders() {
     await util.removeOBListing(config, devicePublicModel);
 
     // Add a payment object to the payments array.
+    config.expiration = devicePublicModel.expiration;
     await util.addPaymentObject(config);
 
     console.log(`OB listing for ${devicePublicModel._id} successfully removed.`);
