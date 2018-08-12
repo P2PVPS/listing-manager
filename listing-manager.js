@@ -241,6 +241,7 @@ setInterval(function() {
 // Check all rented devices to ensure their connection is active.
 async function checkRentedDevices() {
   //debugger;
+  console.log(`Running checkRentedDevices()`);
 
   try {
     // Get a list of rented devices from the server.
