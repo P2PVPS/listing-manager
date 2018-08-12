@@ -245,7 +245,6 @@ async function checkRentedDevices() {
   try {
     // Get a list of rented devices from the server.
     const rentedDevices = await util.getRentedDevices(config);
-    console.log(`config: ${JSON.stringify(config, null, 2)}`);
 
     for (let i = 0; i < rentedDevices.length; i++) {
       const thisDeviceId = rentedDevices[i];
@@ -269,6 +268,8 @@ async function checkRentedDevices() {
         await util.removeRentedDevice(config, thisDeviceId);
 
         // Refund the renter with a prorated amount.
+        config.devicePublicModel = publicData;
+        await util.prorate(config);
 
         logr.log(
           `Device ${thisDeviceId} has been removed from the rented devices list due to inactivity.`
