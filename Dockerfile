@@ -30,7 +30,7 @@ WORKDIR /home/p2pvps
 # Clone the p2pvps-server2 repo
 RUN git clone https://github.com/P2PVPS/listing-manager
 WORKDIR /home/p2pvps/listing-manager
-RUN git checkout unstable
+#RUN git checkout unstable
 RUN npm install
 
 
@@ -42,10 +42,10 @@ VOLUME /home/p2pvps/logs
 VOLUME /home/p2pvps/auth
 
 #EXPOSE 3434
-#CMD [ "npm", "start" ]
+CMD [ "npm", "start" ]
 
 #Dummy app just to get the container running with docker-compose.
 #You can then enter the container with command: docker exec -it <container ID> /bin/bash
-RUN npm install express
-COPY dummyapp.js dummyapp.js
-CMD ["node", "dummyapp.js"]
+#RUN npm install express
+#COPY dummyapp.js dummyapp.js
+#CMD ["node", "dummyapp.js"]
