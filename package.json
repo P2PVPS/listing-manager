@@ -1,10 +1,11 @@
 {
   "name": "listing-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manages the OpenBazaar listings for P2P VPS marketplace",
   "main": "listing-manager.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/_mocha ./test/*.js",
+    "test-travis": "./node_modules/mocha/bin/_mocha ./test/*.js",
     "start": "node listing-manager.js"
   },
   "author": "chris.troutner@gmail.com",
